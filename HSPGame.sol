@@ -159,7 +159,7 @@ contract HPSGame {
         uint256 _amount = challenges[_slot].p1.amount + challenges[_slot].p2.amount;
         require(_amount > challenges[_slot].p1.amount && _amount > challenges[_slot].p2.amount);
         
-        if (challenges[_slot].expireTime > now) {
+        if (now > challenges[_slot].expireTime) {
             if (challenges[_slot].state == reviewed1State) {
                 if (challenges[_slot].p1Ans > 0) {
                     challenges[_slot].p1.addr.transfer(_amount);
